@@ -1,97 +1,183 @@
 //all the variables i'll be needing
-let playerChoice;
 let computerChoice;
-let  playerScore = 0;
-let computerScore = 0;
 
+let playerScore = 0
 
+let computerScore = 0
 
+let playerActualScore = document.querySelector('#player-actual-score') 
 
-// Algorithm for the computer's choice
-// if the rounded random number = 1 then return rock 
-// if the rounded random number = 2 then return paper
-// if the rounded random number = 3 then return scissors
+let computerActualScore = document.querySelector('#computer-actual-score') 
 
+let rockOne = document.querySelector('#Rock1')
+
+let paperOne = document.querySelector('#Paper1')
+
+let scissorsOne = document.querySelector('#Scissors1')
+
+let pictureHolderOne = document.querySelector('#picture-holder1')
+
+let pictureHolderTwo = document.querySelector('#picture-holder2')
+
+let playerGameProgress = document.querySelector('#player-game-progress')
+
+let computerGameProgress = document.querySelector('#computer-game-progress')
+
+let winOrLoss = document.querySelector('.win-or-loss')
+
+let playerName = document.querySelector('#player-name')
+
+let playerAbbrevation = document.querySelector('#player-abbre')
+
+playerName.textContent = prompt('Enter a name to play')
+alert(`Instructions for the game are as follows;
+> This is a game of first to 5 point
+> Reload the page to play again
+> The game starts as soon as you click on the ok button 
+> You can start by clicking on any of the buttons (Rock,Paper,Scissors)
+(Note: this is a game of 5 but the game will continue regardless of your win or loss status)`)
+playerAbbrevation.textContent = getInitialLetter(playerName.textContent)
+
+// functions 
+
+function getInitialLetter(playersName) {
+    let initial = playersName.charAt(0)
+    return initial;
+};
 
 function getComputerChoice() {
     if ((Math.floor(Math.random()*3) + 1 == 1)) {
-        return `Rock`;
+        return 'Rock'
     } else if ((Math.floor(Math.random()*3) + 1 == 2)) {
-        return `Paper`
+        return 'Paper'
     } else {
-        return `Scissors`
+       return 'Scissors'
     }
 }
 
-
-// Algorithm for a single round
-// using the inputs from both the user and computer
-// create if statements for ties, wins and losses
-// it should return a statement depending on the choices
-// and increases the scores depending on the if's condition
-
-function playRound(playerSelection,computerSelection) {
-    playerChoice = prompt('Rock,Paper,Scissors ?');
+function playRound (playerSelection) {
     computerChoice = getComputerChoice();
    
 
-    if (playerChoice == 'Rock' && computerChoice == 'Rock') {
-        return `It's a tie, rock can't beat rock silly
-        Player's Score: ${playerScore}
-        Computer's Score: ${computerScore}`;
-    } else if (playerChoice == 'Rock' && computerChoice == 'Paper') {
-        return `You lose! ,paper beats rock
-        Player's Score: ${playerScore}
-        Computer's Score: ${computerScore += 1}`;
-    } else if (playerChoice == 'Rock' && computerChoice == 'Scissors') {
-        return `You win ,rock beats scissors
-        Player's Score: ${playerScore += 1}
-        Computer's Score: ${computerScore}`;
-    } else if (playerChoice == 'Paper' && computerChoice == 'Paper') {
-        return `It's a tie, paper can't beat paper silly
-        Player's Score: ${playerScore}
-        Computer's Score: ${computerScore}`;
-    } else if (playerChoice == 'Paper' && computerChoice == 'Scissors') {
-        return `You lose! ,scissors beats paper
-        Player's Score: ${playerScore}
-        Computer's Score: ${computerScore += 1}`;
-    } else if (playerChoice == 'Paper' && computerChoice == 'Rock') {
-        return `You win ,paper beats rock
-        Player's Score: ${playerScore += 1}
-        Computer's Score: ${computerScore}`;
-    } else if (playerChoice == 'Scissors' && computerChoice == 'Scissors') {
-        return `It's a tie, scissors can't beat scissors silly
-        Player's Score: ${playerScore}
-        Computer's Score: ${computerScore}`;
-    } else if (playerChoice == 'Scissors' && computerChoice == 'Rock') {
-        return `You lose! ,rock beats scissors
-        Player's Score: ${playerScore}
-        Computer's Score: ${computerScore += 1}`;
+    if (playerSelection == 'rock' && computerChoice == 'Rock') {
+       playerGameProgress.textContent = 'rock'
+
+       computerGameProgress.textContent = 'rock'
+    } else if (playerSelection == 'rock' && computerChoice == 'Paper') {
+        playerGameProgress.textContent = 'rock'
+ 
+        computerGameProgress.textContent = 'paper'        
+    } else if ( playerSelection == 'rock' && computerChoice == 'Scissors') {
+        playerGameProgress.textContent = 'rock'
+ 
+        computerGameProgress.textContent = 'scissors'
+    } else if ( playerSelection == 'paper' && computerChoice == 'Paper') {
+        playerGameProgress.textContent = 'paper'
+ 
+        computerGameProgress.textContent = 'paper'
+    } else if ( playerSelection == 'paper' && computerChoice == 'Scissors') {
+        playerGameProgress.textContent = 'paper'
+ 
+        computerGameProgress.textContent = 'scissors'
+    } else if ( playerSelection == 'paper' && computerChoice == 'Rock') {
+        playerGameProgress.textContent = 'paper'
+ 
+        computerGameProgress.textContent = 'rock'
+    } else if ( playerSelection == 'scissors' && computerChoice == 'Scissors') {
+        playerGameProgress.textContent = 'scissors'
+ 
+        computerGameProgress.textContent = 'scissors'
+    } else if ( playerSelection == 'scissors' && computerChoice == 'Rock') {
+        playerGameProgress.textContent = 'scissors'
+ 
+        computerGameProgress.textContent = 'rock'
     } else {
-        return `You win ,scissors beats paper
-        Player's Score: ${playerScore += 1}
-        Computer's Score: ${computerScore}`;
+        playerGameProgress.textContent = 'scissors'
+ 
+        computerGameProgress.textContent = 'paper'
     }
 }
 
-// Algorithm for the game 
-// display in the console log , the playRound function 5 times
-// if the player score and computer score = 5 then display you win or you lose respectively 
-// else you can do better than that 
-function game() {
-    console.log(playRound(playerChoice,computerChoice))
-    console.log(playRound(playerChoice,computerChoice))    
-    console.log(playRound(playerChoice,computerChoice))
-    console.log(playRound(playerChoice,computerChoice))
-    console.log(playRound(playerChoice,computerChoice))
-  
-    if (playerScore == 5) {
-        console.log('You win!!!')
-    } else if (computerScore == 5) {
-        console.log('You lose!!')
+function changePictureHolders(playerChoice) {
+
+    if (playerChoice == 'rock' && computerChoice == 'Rock') {
+        pictureHolderTwo.style.cssText = 'background-image: url(./Images/Right-hand-rock.jpg); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+        pictureHolderOne.style.cssText = 'background-image: url(./Images/Right-hand-rock.jpg); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+    } else if (playerChoice == 'rock' && computerChoice == 'Paper') {
+        pictureHolderTwo.style.cssText = 'background-image: url(./Images/Right-hand-rock.jpg); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+        pictureHolderOne.style.cssText = 'background-image: url(./Images/Paper.jpg); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+    } else if ( playerChoice == 'rock' && computerChoice == 'Scissors') {
+       pictureHolderTwo.style.cssText = 'background-image: url(./Images/Right-hand-rock.jpg); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+       pictureHolderOne.style.cssText = 'background-image: url(./Images/Right-hand-scissors.webp); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+    } else if ( playerChoice == 'paper' && computerChoice == 'Paper') {
+        pictureHolderTwo.style.cssText = 'background-image: url(./Images/Paper.jpg); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+        pictureHolderOne.style.cssText = 'background-image: url(./Images/Paper.jpg); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+    } else if ( playerChoice == 'paper' && computerChoice == 'Scissors') {
+        pictureHolderTwo.style.cssText = 'background-image: url(./Images/Paper.jpg); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+        pictureHolderOne.style.cssText = 'background-image: url(./Images/Right-hand-scissors.webp); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+    } else if ( playerChoice == 'paper' && computerChoice == 'Rock') {
+        pictureHolderTwo.style.cssText = 'background-image: url(./Images/Paper.jpg); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+        pictureHolderOne.style.cssText = 'background-image: url(./Images/Right-hand-rock.jpg); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+    } else if ( playerChoice == 'scissors' && computerChoice == 'Scissors') {
+        pictureHolderTwo.style.cssText = 'background-image: url(./Images/Right-hand-scissors.webp); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+        pictureHolderOne.style.cssText = 'background-image: url(./Images/Right-hand-scissors.webp); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+    } else if ( playerChoice == 'scissors' && computerChoice == 'Rock') {
+        pictureHolderTwo.style.cssText = 'background-image: url(./Images/Right-hand-scissors.webp); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+        pictureHolderOne.style.cssText = 'background-image: url(./Images/Right-hand-rock.jpg); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
     } else {
-        console.log("You can do better than that")
+        pictureHolderTwo.style.cssText = 'background-image: url(./Images/Right-hand-scissors.webp); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
+        pictureHolderOne.style.cssText = 'background-image: url(./Images/Paper.jpg); background-repeat: no-repeat; background-position: center; background-size: contain; mix-blend-mode: multiply;';
     }
 }
 
-game()
+function updateScore(playerChoose) {
+    
+    if (playerChoose == 'rock' && computerChoice == 'Rock') {
+       
+     } else if (playerChoose == 'rock' && computerChoice == 'Paper') {
+        computerActualScore.textContent = computerScore += 1
+     } else if ( playerChoose == 'rock' && computerChoice == 'Scissors') {
+        playerActualScore.textContent = playerScore += 1
+     } else if ( playerChoose == 'paper' && computerChoice == 'Paper') {
+      
+     } else if ( playerChoose == 'paper' && computerChoice == 'Scissors') {
+        computerActualScore.textContent = computerScore += 1
+     } else if ( playerChoose == 'paper' && computerChoice == 'Rock') {
+        playerActualScore.textContent = playerScore += 1
+     } else if ( playerChoose == 'scissors' && computerChoice == 'Scissors') {
+       
+     } else if ( playerChoose == 'scissors' && computerChoice == 'Rock') {
+        computerActualScore.textContent = computerScore += 1
+     } else {
+        playerActualScore.textContent = playerScore += 1
+     }
+
+
+    if (playerActualScore.textContent == 5 && computerActualScore.textContent < 5) {
+        winOrLoss.textContent = `You win!!!`
+        winOrLoss.setAttribute('style','text-align: center; font-weight: 500; font-size: 52px;')
+    } else if (computerActualScore.textContent == 5 && playerActualScore.textContent < 5) {
+        winOrLoss.textContent = `You lost!!!`
+        winOrLoss.setAttribute('style','text-align: center; font-weight: 500; font-size: 52px;')
+    }
+}
+
+//  buttons
+
+rockOne.addEventListener('click', () => {
+    playRound('rock')
+    changePictureHolders('rock')
+    updateScore('rock')
+})
+
+paperOne.addEventListener('click', () => {
+    playRound('paper')
+    changePictureHolders('paper')
+    updateScore('paper')
+})
+
+scissorsOne.addEventListener('click', () => {
+    playRound('scissors')
+    changePictureHolders('scissors')
+    updateScore('scissors')
+})

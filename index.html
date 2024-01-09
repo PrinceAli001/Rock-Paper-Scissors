@@ -3,9 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock,Paper or Scissors</title>
+    <title>Rock,Paper or Scissors</title> 
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head> 
-<body>
-    <script src="script.js"></script>
+<body> 
+    <h1>Rock Paper Scissors</h1> 
+    <div class="container">
+       <div id="computer-div"> 
+            <h3 id="ai">AI</h3>
+            <div id="picture-holder1"></div> 
+       </div>
+       <div class="score-and-progress">
+            <div class="scores">
+                <p class="name-tag">Score</p>
+                <p class="p-score">AI  Vs <span id="player-abbre"></span></p>
+                <p class="p-score"><span id="computer-actual-score">0</span>  :   <span id="player-actual-score">0</span></p>
+            </div>
+            <div class="progress">
+                <p id="progress1" class="name-tag">Game progress</p>
+                <div class="win-or-loss">
+                    <p>AI throws in <span id="computer-game-progress"></span></p>
+                    <p>Player throws in <span id="player-game-progress"></span></p>
+                </div>
+            </div>
+       </div>
+       <div id="player-div">
+            <h3>Player: <span id="player-name"></span></h3>
+            <div id="picture-holder2"></div>
+            <button id="Rock1">Rock</button>
+            <button id="Paper1">Paper</button>
+            <button id="Scissors1">Scissors</button>
+   </div>
+    </div>
 </body>
 </html>
