@@ -31,7 +31,7 @@ let playerAbbrevation = document.querySelector('#player-abbre')
 
 playerName.textContent = prompt('Enter a name to play')
 alert(`Instructions for the game are as follows;
-> This is a game of first to 5 point
+> This is a game of first to 5 points
 > Reload the page to play again
 > The game starts as soon as you click on the ok button 
 > You can start by clicking on any of the buttons (Rock,Paper,Scissors)

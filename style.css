@@ -37,8 +37,8 @@ button{
 #picture-holder1 , #picture-holder2{
     /* border: solid 4px red; */
     border-radius: 15px;
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 120px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 15px;
@@ -50,7 +50,7 @@ button{
 #computer-div , #player-div{
     /* border: solid 4px red; */
     text-align: center;
-    width: 200px;
+    width: 300px;
     margin: 10px;
 }
 .name-tag{
